@@ -185,6 +185,9 @@ $active-text-color: #ffffff;
     justify-content: flex-start;
     align-items: center;
     display: none;
+    &.active{
+        display: flex;
+    }
     .table__button{
         padding: 6px 25px;
         border-radius: 6px;

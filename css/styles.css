@@ -140,6 +140,9 @@ button {
   align-items: center;
   display: none;
 }
+.table__button__rows.active {
+  display: flex;
+}
 .table__button__rows .table__button {
   padding: 6px 25px;
   border-radius: 6px;

@@ -4,12 +4,6 @@
     box-sizing: border-box;
 }
 
-button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-
 $border-color: rgba($color: #000000, $alpha: 0.1);
 $bg-color: rgba($color: #000000, $alpha: 0.05);
 $hover-bg-color: #1a1a1a;
@@ -42,8 +36,11 @@ $active-text-color: #ffffff;
         position: relative;
 
         .tr {
-            button {
+            button.arrow__button {
                 transition: all 0.3s;
+                background-color: transparent;
+                border: none;
+                outline: none;
 
                 &.sub__active {
                     transform: rotate(-180deg);
@@ -53,7 +50,7 @@ $active-text-color: #ffffff;
 
         &.has-child {
             .tr {
-                button {
+                button.arrow__button {
                     display: block;
                 }
             }
@@ -61,7 +58,7 @@ $active-text-color: #ffffff;
 
         &.no-child {
             .tr {
-                button {
+                button.arrow__button {
                     display: none;
                 }
             }
@@ -80,12 +77,12 @@ $active-text-color: #ffffff;
     }
 
     .tbody {
-        .mr{
+        .mr {
             .tr {
                 &:hover {
                     background-color: $hover-bg-color;
                     color: $hover-text-color;
-    
+
                     button,
                     a,
                     span {
@@ -112,6 +109,7 @@ $active-text-color: #ffffff;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
+
         &.limited {
             max-width: 60px;
         }
@@ -125,6 +123,7 @@ $active-text-color: #ffffff;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
+
         &.limited {
             max-width: 60px;
         }
@@ -141,9 +140,11 @@ $active-text-color: #ffffff;
                 span {
                     color: $hover-text-color;
                 }
-                .checkbox__item{
+
+                .checkbox__item {
                     background-color: #0075FF !important;
-                    i{
+
+                    i {
                         display: block !important;
                     }
                 }
@@ -151,7 +152,7 @@ $active-text-color: #ffffff;
         }
     }
 
-    .checkbox__item{
+    .checkbox__item {
         width: 15px;
         height: 15px;
         border: 1px solid #767676;
@@ -163,13 +164,16 @@ $active-text-color: #ffffff;
         margin: auto 0;
         background-color: #fff;
         color: #fff;
-        i{
+
+        i {
             display: block;
         }
-        &.select__all{
-            &.check__active{
+
+        &.select__all {
+            &.check__active {
                 background-color: #0075FF !important;
-                i{
+
+                i {
                     display: block !important;
                 }
             }
@@ -177,7 +181,7 @@ $active-text-color: #ffffff;
     }
 }
 
-.table__button__rows{
+.table__button__rows {
     width: 100%;
     margin-bottom: 20px;
     position: relative;
@@ -185,17 +189,20 @@ $active-text-color: #ffffff;
     justify-content: flex-start;
     align-items: center;
     display: none;
-    &.active{
+
+    &.active {
         display: flex;
     }
-    .table__button{
+
+    .table__button {
         padding: 6px 25px;
         border-radius: 6px;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        &__delete{
+
+        &__delete {
             background-color: #dc3545;
             color: #fff;
         }

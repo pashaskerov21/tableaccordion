@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
 .table__wrapper {
   width: 100%;
   overflow: auto;
@@ -32,16 +26,19 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
 }
-.general__table .mr .tr button {
+.general__table .mr .tr button.arrow__button {
   transition: all 0.3s;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
-.general__table .mr .tr button.sub__active {
+.general__table .mr .tr button.arrow__button.sub__active {
   transform: rotate(-180deg);
 }
-.general__table .mr.has-child .tr button {
+.general__table .mr.has-child .tr button.arrow__button {
   display: block;
 }
-.general__table .mr.no-child .tr button {
+.general__table .mr.no-child .tr button.arrow__button {
   display: none;
 }
 .general__table .mr:nth-child(odd) {

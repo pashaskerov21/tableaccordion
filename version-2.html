@@ -17,6 +17,14 @@
 
         <div class="table__button__rows">
             <div class="table__button table__button__delete">Sil</div>
+            <div class="table__custom__dropdown">
+                <div class="active__value">15</div>
+                <div class="table__dropdown__menu">
+                    <a href="#" class="active">15</a>
+                    <a href="#">20</a>
+                    <a href="#">25</a>
+                </div>
+            </div>
         </div>
         <div class="table__wrapper">
             <div class="general__table">
@@ -1000,7 +1008,7 @@
                     saveOrderFunction(evt.items.length === 0 || evt.items.length === 1 ? activeOrderData[0] : activeOrderData, orderData)
                 },
                 onSelect: function (evt) {
-                    $('.table__button__rows').addClass('active');
+                    $('.table__button__rows .table__button__delete').addClass('active');
                     let id = $(evt.item).data('id');
                     let subRows = $(`.sub__table__wrapper[data-parent="${id}"] .mr`);
                     subRows.removeClass('sortable-selected');
@@ -1008,7 +1016,7 @@
                 },
                 onDeselect: function (evt) {
                     if ($('.mr.sortable-selected').length === 0) {
-                        $('.table__button__rows').removeClass('active')
+                        $('.table__button__rows .table__button__delete').removeClass('active')
                     }
                     if ($('.mr').length !== $('.mr.sortable-selected').length) {
                         $('.checkbox__item.select__all').removeClass('check__active')
@@ -1052,9 +1060,9 @@
             }
 
             if ($('.mr.sortable-selected').length === 0) {
-                $('.table__button__rows').removeClass('active');
+                $('.table__button__rows .table__button__delete').removeClass('active');
             } else {
-                $('.table__button__rows').addClass('active');
+                $('.table__button__rows .table__button__delete').addClass('active');
             }
         })
 

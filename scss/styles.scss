@@ -188,11 +188,7 @@ $active-text-color: #ffffff;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    display: none;
 
-    &.active {
-        display: flex;
-    }
 
     .table__button {
         padding: 6px 25px;
@@ -205,6 +201,75 @@ $active-text-color: #ffffff;
         &__delete {
             background-color: #dc3545;
             color: #fff;
+            display: none;
+
+            &.active {
+                display: flex;
+            }
+        }
+    }
+}
+
+.table__custom__dropdown {
+    position: relative;
+    z-index: 90;
+    .active__value {
+        padding: 6px 15px;
+        border-radius: 6px;
+        background-color: #adb5bd;
+        color: #fff;
+        font-weight: 600;
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: 0.255em;
+            content: "";
+            border-top: 0.3em solid;
+            border-right: 0.3em solid transparent;
+            border-bottom: 0;
+            border-left: 0.3em solid transparent;
+        }
+        &:hover{
+            &~.table__dropdown__menu{
+                display: flex;
+            }
+        }
+    }
+    .table__dropdown__menu{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #adb5bd;
+        border-radius: 6px;
+        display: none;
+        background-color: #fff;
+        padding: 3px 0;
+        a{
+            color: #000;
+            text-decoration: none;
+            display: block;
+            padding: 4px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            &:hover,
+            &.active{
+                background-color: #0d6efd;
+                color: #fff;
+            }
+        }
+    }
+    &:hover{
+        .table__dropdown__menu{
+            display: flex;
         }
     }
 }

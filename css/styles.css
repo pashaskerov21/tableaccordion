@@ -282,11 +282,20 @@
 .custom__modal__close__button::before {
   transform: rotate(-45deg);
 }
+.custom__modal .form__select {
+  width: 100%;
+  padding: 12px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
 .custom__modal .modal__inner {
   width: 100%;
   min-height: 300px;
   max-height: 80vh;
-  padding: 30px 15px;
+  padding: 20px 15px 15px;
+  display: flex;
+  flex-direction: column;
 }
 @media (min-width: 992px) {
   .custom__modal .modal__inner {
@@ -295,10 +304,12 @@
 }
 .custom__modal .modal__form {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: stretch;
   gap: 15px;
 }
 .custom__modal .modal__form button[type=submit] {
@@ -323,8 +334,9 @@
   }
 }
 .custom__modal .table__col {
-  height: 450px;
+  height: 350px;
   overflow: auto;
+  max-height: calc(80vh - 150px);
 }
 .custom__modal .table__col::-webkit-scrollbar {
   width: 6px;
@@ -335,7 +347,17 @@
 }
 @media (min-width: 576px) {
   .custom__modal .table__col {
+    height: 400px;
+  }
+}
+@media (min-width: 1200px) {
+  .custom__modal .table__col {
     height: 500px;
+  }
+}
+@media (min-width: 1400px) {
+  .custom__modal .table__col {
+    height: 550px;
   }
 }
 .custom__modal .modal__table {

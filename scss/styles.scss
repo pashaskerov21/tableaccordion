@@ -356,21 +356,32 @@ $active-text-color: #ffffff;
         }
     }
 
+    .form__select{
+        width: 100%;
+        padding: 12px;
+        outline: none;
+        border: 1px solid rgba($color: #000000, $alpha: 0.1);
+        border-radius: 6px;
+    }
     .modal__inner {
         width: 100%;
         min-height: 300px;
         max-height: 80vh;
-        padding: 30px 15px;
+        padding: 20px 15px 15px;
+        display: flex;
+        flex-direction: column;
         @media (min-width: 992px){
             padding: 30px 20px;
         }
     }
     .modal__form{
         width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        align-self: stretch;
         gap: 15px;
         button[type="submit"]{
             align-self: flex-end;
@@ -393,8 +404,9 @@ $active-text-color: #ffffff;
         }
     }
     .table__col{
-        height: 450px;
+        height: 350px;
         overflow: auto;
+        max-height: calc(80vh - 150px);
         &::-webkit-scrollbar{
             width: 6px;
             height: 6px;
@@ -403,7 +415,13 @@ $active-text-color: #ffffff;
             background-color: #adb5bd;
         }
         @media (min-width: 576px){
+            height: 400px;
+        }
+        @media (min-width: 1200px){
             height: 500px;
+        }
+        @media (min-width: 1400px){
+            height: 550px;
         }
     }
     .modal__table{

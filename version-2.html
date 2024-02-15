@@ -16,7 +16,8 @@
     <div class="container py-5">
 
         <div class="table__button__rows">
-            <div class="table__button table__button__delete">Sil</div>
+            <div class="table__button selected_rows_button table__button__delete">Sil</div>
+            <div class="table__button selected_rows_button table__button__edit">Edit</div>
             <div class="table__custom__dropdown">
                 <div class="active__value">15</div>
                 <div class="table__dropdown__menu">
@@ -949,6 +950,144 @@
         </div>
     </div>
 
+    <div class="custom__backdrop"></div>
+    <div class="custom__modal">
+        <div class="custom__modal__close__button"></div>
+        <div class="modal__inner">
+            <form action="#" class="modal__form">
+                <div class="modal__row">
+                    <div class="modal__row__col">
+                        <select class="form-select">
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Lorem ipsum dolor</option>
+                        </select>
+                    </div>
+                    <div class="modal__row__col table__col">
+                        <table class="modal__table table border">
+                            <thead>
+                                <tr>
+                                    <th>Stock</th>
+                                    <th>Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>Lorem ipsum dolor</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg">Submit</button>
+            </form>
+        </div>
+    </div>
+
 
     <!-- jQuery and SortableJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -1008,22 +1147,35 @@
                     saveOrderFunction(evt.items.length === 0 || evt.items.length === 1 ? activeOrderData[0] : activeOrderData, orderData)
                 },
                 onSelect: function (evt) {
-                    $('.table__button__rows .table__button__delete').addClass('active');
-                    let id = $(evt.item).data('id');
+                    let selectClass = 'row__select'
+
+                    let item = $(evt.item);
+                    let id = item.data('id');
+                    let selectedRowsBtn = $('.table__button__rows .selected_rows_button');
                     let subRows = $(`.sub__table__wrapper[data-parent="${id}"] .mr`);
-                    subRows.removeClass('sortable-selected');
-                    subRows.addClass('sortable-selected');
+                    item.addClass(selectClass);
+                    selectedRowsBtn.addClass('active');
+                    subRows.removeClass(selectClass);
+                    subRows.addClass(selectClass);
+                    if ($('.mr').length === $('.mr.row__select').length) {
+                        $('.checkbox__item.select__all').addClass('check__active')
+                    }
                 },
                 onDeselect: function (evt) {
-                    if ($('.mr.sortable-selected').length === 0) {
-                        $('.table__button__rows .table__button__delete').removeClass('active')
+                    let selectClass = 'row__select'
+
+                    let item = $(evt.item);
+                    let id = item.data('id');
+                    let selectedRowsBtn = $('.table__button__rows .selected_rows_button');
+                    let subRows = $(`.sub__table__wrapper[data-parent="${id}"] .mr`);
+                    item.removeClass(selectClass);
+                    subRows.removeClass(selectClass);
+                    if ($('.mr.row__select').length === 0) {
+                        selectedRowsBtn.removeClass('active');
                     }
-                    if ($('.mr').length !== $('.mr.sortable-selected').length) {
+                    if ($('.mr').length !== $('.mr.row__select').length) {
                         $('.checkbox__item.select__all').removeClass('check__active')
                     }
-                    let id = $(evt.item).data('id');
-                    let subRows = $(`.sub__table__wrapper[data-parent="${id}"] .mr`);
-                    subRows.removeClass('sortable-selected');
                 },
                 handle: '.mr'
             });
@@ -1051,27 +1203,38 @@
         }
 
         $('.checkbox__item.select__all').click(function () {
+            let selectedRowsBtn = $('.table__button__rows .selected_rows_button');
             $(this).toggleClass('check__active');
-            $('.mr').toggleClass('sortable-selected');
-            if ($('.mr').hasClass('sortable-selected')) {
-                $('.mr').addClass('sortable-selected');
+            $('.mr').toggleClass('row__select');
+            if ($('.mr').hasClass('row__select')) {
+                $('.mr').addClass('row__select');
             } else {
-                $('.mr').removeClass('sortable-selected');
+                $('.mr').removeClass('row__select');
             }
 
-            if ($('.mr.sortable-selected').length === 0) {
-                $('.table__button__rows .table__button__delete').removeClass('active');
+            if ($('.mr.row__select').length === 0) {
+                selectedRowsBtn.removeClass('active');
             } else {
-                $('.table__button__rows .table__button__delete').addClass('active');
+                selectedRowsBtn.addClass('active');
             }
         })
 
         $('.table__button__delete').click(function () {
-            const selectedRows = $('.mr.sortable-selected');
+            const selectedRows = $('.mr.row__select');
             const rowIds = selectedRows.map(function (index, row) {
                 return $(row).data('id');
             }).get();
             console.log('Silinən sətirlər', rowIds);
+        });
+        $('.table__button__edit').click(function () {
+            const selectedRows = $('.mr.row__select');
+            const rowIds = selectedRows.map(function (index, row) {
+                return $(row).data('id');
+            }).get();
+            console.log('Düzəliş ediləcək sətirlər', rowIds);
+
+            $('.custom__backdrop').show();
+            $('.custom__modal').show();
         });
     </script>
 
@@ -1092,6 +1255,17 @@
 
             })
         })
+    </script>
+
+    <script>
+        $('.custom__backdrop').click(function () {
+            $(this).hide();
+            $('.custom__modal').hide();
+        });
+        $('.custom__modal__close__button').click(function () {
+            $('.custom__backdrop').hide();
+            $('.custom__modal').hide();
+        });
     </script>
 </body>
 

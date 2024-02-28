@@ -181,6 +181,9 @@
 .table__custom__dropdown.action_dropdown.active {
   display: block;
 }
+.table__custom__dropdown.action_dropdown .active__value {
+  background-color: #198754;
+}
 .table__custom__dropdown .active__value {
   padding: 6px 15px;
   border-radius: 6px;

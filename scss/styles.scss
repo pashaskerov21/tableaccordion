@@ -233,6 +233,9 @@ $active-text-color: #ffffff;
         &.active{
             display: block;
         }
+        .active__value{
+            background-color: #198754;
+        }
     }
 
     .active__value {

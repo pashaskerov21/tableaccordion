@@ -26,6 +26,14 @@
                     <a href="#">25</a>
                 </div>
             </div>
+            <div class="table__custom__dropdown tcd_lg action_dropdown">
+                <div class="active__value">Actions</div>
+                <div class="table__dropdown__menu">
+                    <div class="dropdown_menu_item table__button__delete">Secilmişləri Sil</div>
+                    <div class="dropdown_menu_item table__button__edit">Edit</div>
+                    <div class="dropdown_menu_item table__button__deactive">Deaktiv</div>
+                </div>
+            </div>
         </div>
         <div class="table__wrapper">
             <div class="general__table">
@@ -1152,9 +1160,11 @@
                     let item = $(evt.item);
                     let id = item.data('id');
                     let selectedRowsBtn = $('.table__button__rows .selected_rows_button');
+                    let actionDropdown = $('.action_dropdown')
                     let subRows = $(`.sub__table__wrapper[data-parent="${id}"] .mr`);
                     item.addClass(selectClass);
                     selectedRowsBtn.addClass('active');
+                    actionDropdown.addClass('active');
                     subRows.removeClass(selectClass);
                     subRows.addClass(selectClass);
                     if ($('.mr').length === $('.mr.row__select').length) {
@@ -1167,9 +1177,11 @@
                     let item = $(evt.item);
                     let id = item.data('id');
                     let selectedRowsBtn = $('.table__button__rows .selected_rows_button');
+                    let actionDropdown = $('.action_dropdown')
                     let subRows = $(`.sub__table__wrapper[data-parent="${id}"] .mr`);
                     item.removeClass(selectClass);
                     subRows.removeClass(selectClass);
+                    actionDropdown.removeClass('active');
                     if ($('.mr.row__select').length === 0) {
                         selectedRowsBtn.removeClass('active');
                     }
@@ -1204,6 +1216,7 @@
 
         $('.checkbox__item.select__all').click(function () {
             let selectedRowsBtn = $('.table__button__rows .selected_rows_button');
+            let actionDropdown = $('.action_dropdown')
             $(this).toggleClass('check__active');
             $('.mr').toggleClass('row__select');
             if ($('.mr').hasClass('row__select')) {
@@ -1214,8 +1227,10 @@
 
             if ($('.mr.row__select').length === 0) {
                 selectedRowsBtn.removeClass('active');
+                actionDropdown.removeClass('active');
             } else {
                 selectedRowsBtn.addClass('active');
+                actionDropdown.addClass('active');
             }
         })
 
@@ -1235,6 +1250,13 @@
 
             $('.custom__backdrop').show();
             $('.custom__modal').show();
+        });
+        $('.table__button__deactive').click(function () {
+            const selectedRows = $('.mr.row__select');
+            const rowIds = selectedRows.map(function (index, row) {
+                return $(row).data('id');
+            }).get();
+            console.log('Deaktiv sətirlər', rowIds);
         });
     </script>
 
